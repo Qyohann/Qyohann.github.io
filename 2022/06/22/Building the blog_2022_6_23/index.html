@@ -1,0 +1,188 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>利用Hexo和Butterfly主题搭建个人博客流程 | Yohann's Personal Blog</title><meta name="keywords" content="Hexo Personal Blog"><meta name="author" content="Yuhang Qiu"><meta name="copyright" content="Yuhang Qiu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="此贴记录一下如何使用基于nodejs的静态博客网站生成器Hexo去生成一个个人博客，该教程以使用Butterfly主题为例进行演示。 1. 配置Github利用Github可以将本地建站的内容同步至云端存储空间中，同时利用github.io (每个账号只有一个) 提供的域名进行个人博客免费部署。 创建好Github后，建立一个为”用户名.github.io”形式的账号，并打开setting，如下图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用Hexo和Butterfly主题搭建个人博客流程">
+<meta property="og:url" content="http://example.com/2022/06/22/Building%20the%20blog_2022_6_23/index.html">
+<meta property="og:site_name" content="Yohann&#39;s Personal Blog">
+<meta property="og:description" content="此贴记录一下如何使用基于nodejs的静态博客网站生成器Hexo去生成一个个人博客，该教程以使用Butterfly主题为例进行演示。 1. 配置Github利用Github可以将本地建站的内容同步至云端存储空间中，同时利用github.io (每个账号只有一个) 提供的域名进行个人博客免费部署。 创建好Github后，建立一个为”用户名.github.io”形式的账号，并打开setting，如下图">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/f776805d4b.jpg">
+<meta property="article:published_time" content="2022-06-22T07:31:29.000Z">
+<meta property="article:modified_time" content="2022-06-23T07:43:32.105Z">
+<meta property="article:author" content="Yuhang Qiu">
+<meta property="article:tag" content="Hexo Personal Blog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/f776805d4b.jpg"><link rel="shortcut icon" href="/img/f776805d4b.jpg"><link rel="canonical" href="http://example.com/2022/06/22/Building%20the%20blog_2022_6_23/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '利用Hexo和Butterfly主题搭建个人博客流程',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-06-23 15:43:32'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar_2.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">1</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">2</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/f776805d4b.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Yohann's Personal Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">利用Hexo和Butterfly主题搭建个人博客流程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-06-22T07:31:29.000Z" title="Created 2022-06-22 15:31:29">2022-06-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-06-23T07:43:32.105Z" title="Updated 2022-06-23 15:43:32">2022-06-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Hexo/">Hexo</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Hexo/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">个人博客搭建</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">1.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>3min</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>此贴记录一下如何使用基于nodejs的静态博客网站生成器<strong>Hexo</strong>去生成一个个人博客，该教程以使用Butterfly主题为例进行演示。</p>
+<h2 id="1-配置Github"><a href="#1-配置Github" class="headerlink" title="1. 配置Github"></a>1. 配置Github</h2><p>利用Github可以将本地建站的内容同步至云端存储空间中，同时利用github.io (每个账号只有一个) 提供的域名进行个人博客免费部署。</p>
+<p>创建好Github后，建立一个为”用户名.github.io”形式的账号，并打开setting，如下图所示。同时注意要将该repo的权限变为public。</p>
+<p><img src="/./img/Blog_img/1.jpg" alt="markdown"></p>
+<h2 id="2-Git安装"><a href="#2-Git安装" class="headerlink" title="2. Git安装"></a>2. Git安装</h2><p>Git是一个开源的分布式版本控制系统，通过它可以方便地进行各大小项目的管理和其它人的协同合作。</p>
+<p>进入<a target="_blank" rel="noopener" href="https://git-scm.com/">Git官网</a>，下载并进行安装，全程基本点击Next即可。</p>
+<p>下载完成后打开Git Bash，输入Git，若返回相关信息，则说明安装成功。<br><img src="/./img/Blog_img/2.jpg" alt="markdown"></p>
+<h2 id="3-绑定Github账号"><a href="#3-绑定Github账号" class="headerlink" title="3. 绑定Github账号"></a>3. 绑定Github账号</h2><p>参考网上资料，主要是本地生成公钥密钥，然后将本地生成的公钥写入github账户中的SSH和GPGkeys这一栏中。</p>
+<h2 id="4-利用Git提交文件的方法"><a href="#4-利用Git提交文件的方法" class="headerlink" title="4. 利用Git提交文件的方法"></a>4. 利用Git提交文件的方法</h2><h3 id="4-1-本地没有Git仓库"><a href="#4-1-本地没有Git仓库" class="headerlink" title="4.1 本地没有Git仓库"></a>4.1 本地没有Git仓库</h3><p>4.1.1 clone远程仓库的<strong>https</strong>链接<br>4.1.2 在<strong>git bash</strong>中输入<strong>git clone https链接</strong>，将远程仓库拷贝至本地<br>4.1.3 输入<strong>git status</strong>可以查看仓库状态，如果显示untracked则表示有些文件没被追踪<br>4.1.4 输入<strong>git add</strong>文件名将文件加入到缓冲区，再用<strong>git commit -m 提交信息</strong>至本地仓库，若为第一次提交则需要输入账号密码<br>4.1.5 输入<strong>git log</strong>可以查看提交记录<br>4.1.6 输入<strong>git push origin(主机名) master</strong>将本地仓库提交到远程仓库</p>
+<h3 id="4-2-本地拥有Git仓库"><a href="#4-2-本地拥有Git仓库" class="headerlink" title="4.2 本地拥有Git仓库"></a>4.2 本地拥有Git仓库</h3><p>4.2.1 建立一个本地仓库，使用git init初始化该仓库<br>4.2.2 输入<strong>git remote add origin http链接</strong>关联远程仓库<br>4.2.3 输入<strong>git pull origin master</strong>同步远程和本地仓库，其它命令与4.1一致</p>
+<h2 id="5-安装nodejs和Hexo"><a href="#5-安装nodejs和Hexo" class="headerlink" title="5. 安装nodejs和Hexo"></a>5. 安装nodejs和Hexo</h2><p>进入<a target="_blank" rel="noopener" href="https://nodejs.org/en/">nodejs官网</a>下载nodejs并不断点击next完成安装。之后可在cmd中输入<strong>node -v</strong>查看版本。</p>
+<p>在指定的文件夹下右键选择打开<strong>Git Bash Here</strong>并输入以下命令安装Hexo。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>安装之后输入<strong>hexo init</strong>命令初始化博客</p>
+<p>输入以下指令生成静态文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+
+<p>输入以下指令运行服务器并在本地4000端口进行查看博客(修改文件时无需重启)：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p>还可以输入以下指令清除缓存文件 db.json 和已生成的静态文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-将Hexo部署Github"><a href="#6-将Hexo部署Github" class="headerlink" title="6. 将Hexo部署Github"></a>6. 将Hexo部署Github</h2><p>在文件夹下打开全局配置文件**_config.yml**下滑到文件底部，输入以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: https://github.com/xxxxxx  #你的仓库地址</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<p>接着在git base中输入以下指令自动生成网站静态文件，并部署到设定的仓库，在这一步中可能需要验证账号：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-配置butterfly主题"><a href="#7-配置butterfly主题" class="headerlink" title="7. 配置butterfly主题"></a>7. 配置butterfly主题</h2><p>在git base中输入以下命令将butterfly主题拷贝至当前文件夹中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/jerryc127/hexo-theme-butterfly.git</span><br></pre></td></tr></table></figure>
+
+<p>在全局**_config.yml**文件中的Extensions处将主题进行修改，原主题进行注释</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme:butterfly</span><br></pre></td></tr></table></figure>
+
+<h2 id="8-butterfly中注意事项"><a href="#8-butterfly中注意事项" class="headerlink" title="8. butterfly中注意事项"></a>8. butterfly中注意事项</h2><ul>
+<li>在themes文件夹下的butterfly中也有一个主题配置文件_config.yml,具体配置指南可参考<a target="_blank" rel="noopener" href="https://butterfly.js.org/">butterfly官网</a></li>
+<li>网站标题、副标题和博主姓名、语言等可以在全局_config.yml文件中设置</li>
+<li>网站search引擎添加，先在<a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search">搜索配置官网</a>下载<strong>search.xml</strong>配置文件到文件夹中，之后在全局配置文 _config.yml文件中添加配置：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post # post:文章范围、page:页面范围、all:覆盖所有</span><br><span class="line">  content: true # 内容是否包含每一篇文章的全部内容</span><br><span class="line">  template:  # ./search.xml 指定定制的XML模板</span><br></pre></td></tr></table></figure>
+在主题配置文件中修改文件<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">local_search:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure></li>
+<li>标签页和分类页制作，输入以下指令：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo new page tags</span><br><span class="line">hexo new page categories</span><br></pre></td></tr></table></figure>
+之后找到source&#x2F;tags&#x2F;index.md文件和source&#x2F;categories&#x2F;index.md，添加type: “tags”或type: “categories”，最后在写每篇博文时开头可以附上tags和categories，如下所示：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">title: 利用Hexo和Butterfly主题搭建个人博客流程</span><br><span class="line">date: 2022-06-22 15:31:29</span><br><span class="line">tags:</span><br><span class="line">  - Hexo Personal Blog</span><br><span class="line">categories: </span><br><span class="line">  - Hexo</span><br><span class="line">  - 个人博客搭建</span><br></pre></td></tr></table></figure></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://example.com">Yuhang Qiu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2022/06/22/Building%20the%20blog_2022_6_23/">http://example.com/2022/06/22/Building%20the%20blog_2022_6_23/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Hexo-Personal-Blog/">Hexo Personal Blog</a></div><div class="post_share"><div class="social-share" data-image="/img/f776805d4b.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar_2.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Yuhang Qiu</div><div class="author-info__description">PhD Student at Monash University</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">1</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">2</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">Congratulation to the publishment of Yuhang's first book《深度学习实战：基于TensorFlow2.X的计算机视觉开发应用》.</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E9%85%8D%E7%BD%AEGithub"><span class="toc-number">1.</span> <span class="toc-text">1. 配置Github</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Git%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">2. Git安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%BB%91%E5%AE%9AGithub%E8%B4%A6%E5%8F%B7"><span class="toc-number">3.</span> <span class="toc-text">3. 绑定Github账号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%88%A9%E7%94%A8Git%E6%8F%90%E4%BA%A4%E6%96%87%E4%BB%B6%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">4. 利用Git提交文件的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E6%9C%AC%E5%9C%B0%E6%B2%A1%E6%9C%89Git%E4%BB%93%E5%BA%93"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 本地没有Git仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E6%9C%AC%E5%9C%B0%E6%8B%A5%E6%9C%89Git%E4%BB%93%E5%BA%93"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 本地拥有Git仓库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%AE%89%E8%A3%85nodejs%E5%92%8CHexo"><span class="toc-number">5.</span> <span class="toc-text">5. 安装nodejs和Hexo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%B0%86Hexo%E9%83%A8%E7%BD%B2Github"><span class="toc-number">6.</span> <span class="toc-text">6. 将Hexo部署Github</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E9%85%8D%E7%BD%AEbutterfly%E4%B8%BB%E9%A2%98"><span class="toc-number">7.</span> <span class="toc-text">7. 配置butterfly主题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-butterfly%E4%B8%AD%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">8.</span> <span class="toc-text">8. butterfly中注意事项</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/06/22/Building%20the%20blog_2022_6_23/" title="利用Hexo和Butterfly主题搭建个人博客流程"><img src="/img/f776805d4b.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="利用Hexo和Butterfly主题搭建个人博客流程"/></a><div class="content"><a class="title" href="/2022/06/22/Building%20the%20blog_2022_6_23/" title="利用Hexo和Butterfly主题搭建个人博客流程">利用Hexo和Butterfly主题搭建个人博客流程</a><time datetime="2022-06-22T07:31:29.000Z" title="Created 2022-06-22 15:31:29">2022-06-22</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/f776805d4b.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2022 By Yuhang Qiu</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"></div></div></body></html>
